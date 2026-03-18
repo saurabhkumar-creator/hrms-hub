@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 217 91% 97%;
+    --accent-foreground: 217 91% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 92%;
+    --input: 240 6% 90%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 91% 97%;
+    --sidebar-accent-foreground: 217 91% 40%;
+    --sidebar-border: 240 6% 94%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Custom tokens */
+    --surface-ring: 0 0 0 1px rgba(0,0,0,0.06);
+    --surface-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --surface-elevated: 0 0 0 1px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --surface-hover: 0 0 0 1px rgba(0,0,0,0.08), 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.04);
+
+    --status-present: 142 71% 45%;
+    --status-present-bg: 142 71% 95%;
+    --status-absent: 0 84% 60%;
+    --status-absent-bg: 0 84% 96%;
+    --status-warning: 38 92% 50%;
+    --status-warning-bg: 38 92% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .surface-card {
+    box-shadow: var(--surface-elevated);
+    @apply rounded-lg bg-card transition-shadow duration-200;
+  }
+
+  .surface-card:hover {
+    box-shadow: var(--surface-hover);
+  }
+
+  .stat-card {
+    box-shadow: var(--surface-elevated);
+    @apply rounded-xl bg-card p-5 transition-all duration-200;
+  }
+
+  .stat-card:hover {
+    box-shadow: var(--surface-hover);
+    transform: translateY(-1px);
+  }
+
+  .page-header {
+    @apply mb-6;
+  }
+
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight text-foreground;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-muted-foreground mt-1;
+  }
+
+  .data-table {
+    @apply w-full text-left text-sm;
+  }
+
+  .data-table thead {
+    @apply bg-muted/50;
+  }
+
+  .data-table th {
+    @apply px-4 py-3 text-xs font-medium uppercase tracking-wider text-muted-foreground;
+  }
+
+  .data-table tbody {
+    @apply divide-y divide-border;
+  }
+
+  .data-table tbody tr {
+    @apply transition-colors duration-150 hover:bg-muted/30;
+  }
+
+  .data-table td {
+    @apply px-4 py-3.5;
+  }
+
+  .badge-present {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+    background: hsl(var(--status-present-bg));
+    color: hsl(var(--status-present));
+  }
+
+  .badge-absent {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+    background: hsl(var(--status-absent-bg));
+    color: hsl(var(--status-absent));
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+    background: hsl(var(--status-warning-bg));
+    color: hsl(var(--status-warning));
+  }
+
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 px-4;
+  }
+
+  .empty-state-icon {
+    @apply h-12 w-12 text-muted-foreground/30 mb-4;
+  }
+
+  .empty-state-title {
+    @apply text-sm font-medium text-foreground mb-1;
+  }
+
+  .empty-state-description {
+    @apply text-sm text-muted-foreground text-center max-w-sm;
+  }
+
+  .form-label {
+    @apply text-xs font-medium text-foreground mb-1.5 block;
+  }
+
+  .form-error {
+    @apply text-xs text-destructive mt-1;
+  }
+}
